@@ -94,5 +94,5 @@ There are many directions this game app could eventually go.  Some anticipated u
 - [ ] Add laser powerups allowing penguin to shoot lasers that destroy walls
 - [ ] Add spikes on top and bottom of water that kill penguin when collided
 
-[game_screen]: NateDawg90.github.io/dragonflyz
+[game]: NateDawg90.github.io/dragonflyz
 [game_screen]: ./assets/game_screen.png "Penelope the Penguin game Display"
