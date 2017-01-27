@@ -1,6 +1,8 @@
 # Penelope the Penguin
 
-[Live Link][game] is a browser game created in Javascript by Nathan Johnson.
+[Live Link][game]
+
+Penelope the Penguin is a browser game created in Javascript by Nathan Johnson.
 
 ![Game Screen: ][game_screen]
 
