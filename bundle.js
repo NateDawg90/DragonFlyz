@@ -86,7 +86,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  padding: 0; margin: 0;\n}\n#myCanvas {\n  background: blue;\n  display: block;\n  /*display: flex;\n  flex-direction: column;*/\n  margin: 0 auto;\n}\n\ndiv {\n  color: red;\n}\n\n#currentscorecontainer {\n\n}\n\n#topscorecontainer {\n\n}\n", ""]);
+	exports.push([module.id, "* {\n  padding: 0; margin: 0;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n}\n\n#by {\n  font-size: 20px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n}\n\n#controls {\n  font-size: 20px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n}\n\n#header {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n\n}\n\n#title {\n  font-size: 40px;\n  font-weight: bold;\n  color: #0C1BA0;\n  font-family: 'Pacifico';\n}\n#myCanvas {\n  background: blue;\n  /*display: block;*/\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n}\n\ndiv {\n  color: red;\n}\n\n#scorecontainer {\n  display: flex;\n  justify-content: space-around;\n}\n\n#scorecontainer * {\n  font-weight: bold;\n  color: black;\n  font-size: 20px;\n}\n", ""]);
 
 	// exports
 
@@ -403,7 +403,7 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	// var canvas = document.getElementById("myCanvas"),
 	// ctx, width, height,
@@ -465,7 +465,8 @@
 	//
 	// main();
 
-	var canvas = document.getElementById("myCanvas"),
+	var canvas = document.getElementById('myCanvas'),
+	    penguinCanvas = document.getElementById('penguin'),
 	    ctx = canvas.getContext("2d"),
 	    refreshRate = 20,
 	    penguin = {
@@ -497,7 +498,7 @@
 	    colors = {
 	    bg: "#0c1ba0",
 	    fill: "#723c09",
-	    light: "#ffffff"
+	    penguin: "#ffff00"
 	},
 	    gameData = {
 	    penguin: {
@@ -530,7 +531,10 @@
 	    canvasInterval = null,
 	    mouseDown = false,
 	    gameRunning = false,
-	    deathText = false;
+	    deathText = false,
+	    scoreCont = document.createElement('div');
+	scoreCont.id = 'scorecontainer';
+	insertAfter(scoreCont, canvas);
 
 	initScoring();
 	createBG();
@@ -538,7 +542,7 @@
 	// set the intial copter game data
 	resetGameData();
 
-	// create copter element
+	// create penguin element
 	createPenguin();
 
 	// create initial floor & ceiling
@@ -609,16 +613,6 @@
 	    createInitialWalls();
 	}
 
-	// function drawPenguin() {
-	//   ctx.beginPath();
-	//   ctx.arc(x, y, penguinRadius, 0, Math.PI*2);
-	//   ctx.fillStyle = "#ead519";
-	//   ctx.fill();
-	//   ctx.closePath();
-	//
-	// }
-
-
 	function createPenguin() {
 
 	    // get the global draw context
@@ -650,54 +644,58 @@
 	    // condition : if an image is specified, use it
 	    if (penguin.img) {
 
-	        // save 'this' context
-	        var that = this;
-
 	        // create penguin element
 	        var penguinImg = new Image();
 	        penguinImg.src = penguin.img;
 
-	        // function sprite (options) {
-	        //
-	        //     var that = {};
-	        //
-	        //     that.context = options.context;
-	        //     that.width = options.width;
-	        //     that.height = options.height;
-	        //     that.image = options.image;
-	        //
-	        //     return that;
-	        //
-	        // }
-	        //
-	        //
-	        // var penguinCanvas = document.getElementById("penguinAnimation");
-	        // penguinCanvas.width = 100;
-	        // penguinCanvas.height = 100;
-	        //
-	        // var penguin = sprite({
-	        //     context: penguinCanvas.getContext("2d"),
-	        //     width: 100,
-	        //     height: 100,
-	        //     image: penguinImg
-	        // });
+	        penguinCanvas.width = 100;
+	        penguinCanvas.height = 100;
+
+	        var s_penguin = sprite({
+	            context: penguinCanvas.getContext("2d"),
+	            width: 137,
+	            height: 72,
+	            image: penguinImg
+	        });
 
 	        // when image has loaded
 	        penguinImg.onload = function () {
-	            ctx.drawImage(penguinImg, gameData.penguin.x, gameData.penguin.y, penguinImg.width, penguinImg.height);
-	            penguin.width = penguinImg.width;
-	            penguin.height = penguinImg.height;
+	            s_penguin.render();
+	            penguin.width = s_penguin.width;
+	            penguin.height = s_penguin.height;
 	        };
+
+	        // penguinImg.onload = function() {
+	        //     ctx.drawImage(penguinImg, gameData.penguin.x, gameData.penguin.y, penguinImg.width, penguinImg.height);
+	        //     penguin.width = penguinImg.width;
+	        //     penguin.height = penguinImg.height;
+	        // };
 
 	        // no image set, use a block
 	    } else {
 	        ctx.beginPath();
 	        roundedRect(ctx, 0, 0, penguin.width, penguin.height, 10);
-	        ctx.fillStyle = colors.light;
+	        ctx.fillStyle = colors.penguin;
 	        ctx.fill();
 	    }
 
 	    ctx.restore();
+	}
+
+	function sprite(options) {
+
+	    var that = {};
+
+	    that.context = options.context;
+	    that.width = options.width;
+	    that.height = options.height;
+	    that.image = options.image;
+
+	    that.render = function () {
+	        // Draw the animation
+	        that.context.drawImage(that.image, 0, 0, that.width, that.height, 0, 0, that.width, that.height);
+	    };
+	    return that;
 	}
 
 	function roundedRect(a, x, y, width, height, radius) {
@@ -749,7 +747,8 @@
 	    scoreContainer.appendChild(score);
 
 	    // add the scores to the page
-	    insertAfter(scoreContainer, canvas);
+	    scoreCont.appendChild(scoreContainer);
+	    // insertAfter(scoreContainer, canvas);
 
 	    return score;
 	}
@@ -763,7 +762,6 @@
 	    document.addEventListener("mouseup", keyUpHandler, false);
 
 	    function keyDownHandler(e) {
-	        console.log(e);
 	        if (e.keyCode == 32 || e.type === "mousedown") {
 	            mouseDown = true;
 	            if (gameRunning === false) {
@@ -1031,6 +1029,7 @@
 	    if (scores.current > scores.top) {
 
 	        // set the top score
+	        scores.top = scores.current;
 	        scores.elements.top.innerHTML = scores.current;
 
 	        // set cookie containing the top score
@@ -1044,7 +1043,9 @@
 	    deathText.id = "deathtext";
 	    var deathTextText = document.createTextNode(deathPhrases[Math.floor(Math.random() * deathPhrases.length)]);
 	    deathText.appendChild(deathTextText);
-	    insertAfter(deathText, canvas);
+	    // insertAfter(deathText, canvas);
+
+	    scoreCont.appendChild(deathText);
 
 	    // if (!deathText) {
 	    //     deathText = document.createElement("p");
