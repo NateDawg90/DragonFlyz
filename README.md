@@ -1,22 +1,24 @@
 # Penelope the Penguin
 
-### Background
+[TuneHub.online][game] is a browser game created in Javascript by Nathan Johnson.
 
-**NB**: You'll probably want to keep the Background section for your production Readme as well.  
+![Game Screen: ][game_screen]
+
+### Background
 
 This is a sidescrolling neverending swimming game starring a penguin. The objective is to swim for as long as possible without hitting a wall or going off the screen.
 
 ### Functionality & MVP  
 
-With this game, users will be able to:
+With this game, users are able to:
 
-- [ ] Start, pause, and reset the game
+- [ ] Start and reset the game
 - [ ] Play the game correctly and without bugs
 - [ ] See the current highscore
 
 In addition, this project will include:
 
-- [ ] An About modal describing the background and rules of the game
+- [ ] A section describing the goal and controls of the game
 - [ ] A production Readme
 
 ## Controls
@@ -39,14 +41,18 @@ This app will consist of a single screen with game board and nav links to the Gi
 
 ### Architecture and Technologies
 
-**NB**: one of the main things you should be researching and deciding upon while you write this proposal is what technologies you plan to use.  Identify and create a plan of attack for the major technical challenges in your project.  It's okay if you don't have all the details of implementation fleshed out, but you should have a solid roadmap by Monday morning.
 
-This project will be implemented with the following technologies:
+Special credit goes to Pete Goodman (website) for inspiration on the framework for a similar helicopter game.
 
-- Vanilla JavaScript and `jquery` for overall structure and game logic,
+
+
+This project was be implemented with the following technologies:
+
+- Vanilla JavaScript for overall structure and game logic,
 - Webpack to bundle and serve up the various scripts.
 
 In addition to the webpack entry file, there will be three scripts involved in this project:
+
 
 
 ### Implementation Timeline
@@ -83,3 +89,5 @@ There are many directions this game app could eventually go.  Some anticipated u
 
 - [ ] Add laser powerups allowing penguin to shoot lasers that destroy walls
 - [ ] Add spikes on top and bottom of water that kill penguin when collided
+
+[game_screen]: ./assets/game_screen.png "Penelope the Penguin game Display"

@@ -86,7 +86,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  padding: 0; margin: 0;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n}\n\n#by {\n  font-size: 20px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n}\n\n#controls {\n  font-size: 20px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n}\n\n#header {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n\n}\n\n#title {\n  font-size: 40px;\n  font-weight: bold;\n  color: #0C1BA0;\n  font-family: 'Pacifico';\n}\n#myCanvas {\n  background: blue;\n  /*display: block;*/\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n}\n\ndiv {\n  color: red;\n}\n\n#scorecontainer {\n  display: flex;\n  justify-content: space-around;\n}\n\n#scorecontainer * {\n  font-weight: bold;\n  color: black;\n  font-size: 20px;\n}\n", ""]);
+	exports.push([module.id, "* {\n  padding: 0; margin: 0;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n}\n\nstrong {\n  text-decoration: italic;\n  font-weight: bolder;\n  color: #0C1BA0;\n  margin: 5px;\n  padding-bottom: 3px;\n  font-family: 'Pacifico';\n  /*align-self: center;*/\n}\n\n#by {\n  font-size: 10px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n  align-self: flex-end;\n  margin-left: auto;\n}\n\n#controls {\n  /*font-size: 16px;*/\n  font-weight: bold;\n  font-family: sans-serif;\n}\n\n#description {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-right: auto;\n}\n\n#desc-body {\n  font-weight: bold;\n  font-family: sans-serif;\n  display: flex;\n  align-items: center;\n}\n\n#header {\n  display: flex;\n  /*justify-content: space-around;*/\n  align-items: center;\n\n}\n\n#header > * {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n}\n\n#title {\n  font-size: 40px;\n  font-weight: bold;\n  color: #0C1BA0;\n  font-family: 'Pacifico';\n  justify-content: center;\n}\n#myCanvas {\n  background: blue;\n  /*display: block;*/\n  width: 100%;\n  height: 670px;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n}\n\n#scorecontainer {\n  display: flex;\n  justify-content: space-around;\n}\n\n#scorecontainer * {\n  font-weight: bold;\n  color: black;\n  font-size: 20px;\n}\n", ""]);
 
 	// exports
 
@@ -767,6 +767,8 @@
 	            if (gameRunning === false) {
 	                startGame();
 	            }
+	        } else if (e.keycode == 80) {
+	            pause();
 	        }
 	    }
 
@@ -1023,6 +1025,21 @@
 	    }
 	}
 
+	function pause() {
+	    var prompt = confirm("You paused the game, click 'OK' to continue your game");
+
+	    if (prompt == false) {
+	        //Didn't click on OK
+	        pause();
+	    }
+
+	    return;
+	}
+
+	// var ReDopause = function() {
+	//    pause();
+	// }
+	//
 	function endGame() {
 
 	    // condition : if the current score is higher than the top score, set it
