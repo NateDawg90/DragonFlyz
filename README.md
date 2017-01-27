@@ -1,6 +1,6 @@
 # Penelope the Penguin
 
-[TuneHub.online][game] is a browser game created in Javascript by Nathan Johnson.
+[NateDawg90.github.io/dragonflyz][game] is a browser game created in Javascript by Nathan Johnson.
 
 ![Game Screen: ][game_screen]
 
@@ -51,9 +51,13 @@ This project was be implemented with the following technologies:
 - Vanilla JavaScript for overall structure and game logic,
 - Webpack to bundle and serve up the various scripts.
 
-In addition to the webpack entry file, there will be three scripts involved in this project:
+Constants are declared for penguin properties, such as dimensions and speed vectors. Physics properties are also defined for terminal velocity, gravity and friction coefficients. As for the obstacles and walls, their width, height, separation, and various other properties are defined.   
 
+Functionally, the game first creates the background and the penguin and resets the game data. It then creates the initial walls and runs a draw function that keeps calling itself until the game has been ended (the player dies). Obstacles are generated randomly and given a constant velocity with which to move across the screen.
 
+A key listener listens for the user's input, and if it is given, the penguin moves vertically in a direction reverse to gravity. Otherwise, gravity carries it up.
+
+a checkForImpact() function checks to see if the penguin has collided with any of the obtacles or walls. If so, an endgame state is reached. A death text, randomly generated, will flash on the screen, and the game will stop moving. Another user input restarts the game.
 
 ### Implementation Timeline
 

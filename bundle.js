@@ -86,7 +86,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  padding: 0; margin: 0;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n}\n\nstrong {\n  text-decoration: italic;\n  font-weight: bolder;\n  color: #0C1BA0;\n  margin: 5px;\n  padding-bottom: 3px;\n  font-family: 'Pacifico';\n  /*align-self: center;*/\n}\n\n#by {\n  font-size: 10px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n  align-self: flex-end;\n  margin-left: auto;\n}\n\n#controls {\n  /*font-size: 16px;*/\n  font-weight: bold;\n  font-family: sans-serif;\n}\n\n#description {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-right: auto;\n}\n\n#desc-body {\n  font-weight: bold;\n  font-family: sans-serif;\n  display: flex;\n  align-items: center;\n}\n\n#header {\n  display: flex;\n  /*justify-content: space-around;*/\n  align-items: center;\n\n}\n\n#header > * {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n}\n\n#title {\n  font-size: 40px;\n  font-weight: bold;\n  color: #0C1BA0;\n  font-family: 'Pacifico';\n  justify-content: center;\n}\n#myCanvas {\n  background: blue;\n  /*display: block;*/\n  width: 100%;\n  height: 670px;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n}\n\n#scorecontainer {\n  display: flex;\n  justify-content: space-around;\n}\n\n#scorecontainer * {\n  font-weight: bold;\n  color: black;\n  font-size: 20px;\n}\n", ""]);
+	exports.push([module.id, "* {\n  padding: 0; margin: 0;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n}\n\nstrong {\n  text-decoration: italic;\n  font-weight: bolder;\n  color: #0C1BA0;\n  margin: 5px;\n  padding-bottom: 3px;\n  font-family: 'Pacifico';\n}\n\n#by {\n  font-size: 10px;\n  font-weight: bold;\n  font-family: sans-serif;\n  color: black;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  /*align-self: flex-end;*/\n  margin-left: auto;\n}\n\n#controls {\n  /*font-size: 16px;*/\n  font-weight: bold;\n  font-family: sans-serif;\n}\n\n#description {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-right: auto;\n}\n\n#desc-body {\n  font-weight: bold;\n  font-family: sans-serif;\n  display: flex;\n  align-items: center;\n}\n\n#header {\n  display: flex;\n  align-items: center;\n\n}\n\n#header > * {\n  flex: 1;\n  display: flex;\n  justify-content: center;\n}\n\n#title {\n  font-size: 40px;\n  font-weight: bold;\n  color: #0C1BA0;\n  font-family: 'Pacifico';\n  justify-content: center;\n  padding-bottom: 9px;\n}\n#myCanvas {\n  background: blue;\n  /*display: block;*/\n  width: 100%;\n  height: 680px;\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n}\n\n#scorecontainer {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n#scorecontainer * {\n  font-weight: bold;\n  color: black;\n  font-size: 20px;\n}\n\n#thumbnails {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  width: 70%;\n}\n", ""]);
 
 	// exports
 
@@ -405,66 +405,6 @@
 
 	'use strict';
 
-	// var canvas = document.getElementById("myCanvas"),
-	// ctx, width, height,
-	//
-	// score = 0,
-	// best = 0,
-	//
-	// // penguin
-	// x = 60,
-	// y = canvas.height/2,
-	// dx = 0,
-	// dy = -7,
-	// penguinRadius = 25,
-	// swimPressed = false,
-	//
-	// currentState,
-	// states = {
-	//   splash: 0, game: 1, score: 2
-	// },
-	//
-	// penguin = [],
-	// walls = [];
-	//
-	// function main() {
-	//   canvas.document.createElement('canvas');
-	//
-	//   width = window.innerWidth;
-	//   height = window.innerHeight;
-	//
-	//   if (width >= 500) {
-	//     width = 320;
-	//     height = 480;
-	//     canvas.style.border = '1px solid #000';
-	//   }
-	//
-	//   canvas.width = width;
-	//   canvas.height = height;
-	//   ctx = canvas.getContext("2d");
-	//
-	//   document.body.appendChild(canvas);
-	//
-	//   var img = new Image();
-	//   img.onload = function() {
-	//     console.log("loading");
-	//   };
-	//   img.src = 'assets/penguin.pg';
-	// }
-	//
-	// function run() {
-	//
-	// }
-	// function update() {
-	//
-	// }
-	//
-	// function render() {
-	//
-	// }
-	//
-	// main();
-
 	var canvas = document.getElementById('myCanvas'),
 	    penguinCanvas = document.getElementById('penguin'),
 	    ctx = canvas.getContext("2d"),
@@ -473,7 +413,7 @@
 	    width: 50,
 	    height: 20,
 	    topSpeed: 5,
-	    acceleration: -0.2,
+	    acceleration: -0.25,
 	    img: null
 	},
 	    physics = {

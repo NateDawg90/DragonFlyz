@@ -14,7 +14,6 @@ strong {
   margin: 5px;
   padding-bottom: 3px;
   font-family: 'Pacifico';
-  /*align-self: center;*/
 }
 
 #by {
@@ -22,7 +21,10 @@ strong {
   font-weight: bold;
   font-family: sans-serif;
   color: black;
-  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*align-self: flex-end;*/
   margin-left: auto;
 }
 
@@ -48,7 +50,6 @@ strong {
 
 #header {
   display: flex;
-  /*justify-content: space-around;*/
   align-items: center;
 
 }
@@ -65,12 +66,13 @@ strong {
   color: #0C1BA0;
   font-family: 'Pacifico';
   justify-content: center;
+  padding-bottom: 9px;
 }
 #myCanvas {
   background: blue;
   /*display: block;*/
   width: 100%;
-  height: 670px;
+  height: 680px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -79,10 +81,18 @@ strong {
 #scorecontainer {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 #scorecontainer * {
   font-weight: bold;
   color: black;
   font-size: 20px;
+}
+
+#thumbnails {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
 }
